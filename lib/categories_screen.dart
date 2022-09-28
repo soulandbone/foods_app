@@ -3,6 +3,7 @@ import 'category_item.dart';
 import './dummy_data.dart';
 
 class CategoryScreen extends StatelessWidget {
+  // this is the screen that shows the GridView with all its categories
   const CategoryScreen({super.key});
 
   @override
@@ -14,7 +15,7 @@ class CategoryScreen extends StatelessWidget {
         body: GridView(
             padding: EdgeInsets.all(25),
             children: DUMMY_CATEGORIES
-                .map((e) => CategoryItem(e.title, e.color))
+                .map((e) => CategoryItem(e.id, e.title, e.color))
                 .toList(),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 200,

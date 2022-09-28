@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import './category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
-  final String text;
+  // This is one of the many "cards" that appear on the GridView
+  final String id;
+  final String title;
   final Color color;
 
-  CategoryItem(this.text, this.color);
+  CategoryItem(this.id, this.title, this.color);
 
   void selectCategory(BuildContext ctx) {
     Navigator.of(ctx).push(MaterialPageRoute(
-      builder: (_) => CategoryMealsScreen(),
+      builder: (_) => CategoryMealsScreen(id, title),
     ));
   }
 
@@ -23,7 +25,7 @@ class CategoryItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         child: Text(
-          text,
+          title,
           style: Theme.of(context).textTheme.headline6,
         ),
         decoration: BoxDecoration(
