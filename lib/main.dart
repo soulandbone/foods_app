@@ -17,11 +17,10 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.amber,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
-        appBarTheme: AppBarTheme(),
         textTheme: ThemeData.light().textTheme.copyWith(
-            headline1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
-            headline2: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
-            headline6: TextStyle(
+            headline1: const TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+            headline2: const TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+            headline6: const TextStyle(
                 fontSize: 20,
                 fontFamily: 'RobotoCondensed',
                 fontWeight: FontWeight.bold)),
