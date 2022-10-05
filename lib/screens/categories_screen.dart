@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'category_item.dart';
-import './dummy_data.dart';
+
+import '../widgets/category_item.dart';
+import '../dummy_data.dart';
 
 class CategoryScreen extends StatelessWidget {
   // this is the screen that shows the GridView with all its categories

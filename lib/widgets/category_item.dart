@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './category_meals_screen.dart';
+import '../screens/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   // This is one of the many "cards" that appear on the GridView

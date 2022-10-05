@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import './dummy_data.dart';
+import 'package:foods_app/widgets/meal_item.dart';
+
+import '../dummy_data.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   //this is the screen that opens after the user has clicked on one of the categories in the GridView
@@ -22,7 +24,14 @@ class CategoryMealsScreen extends StatelessWidget {
       appBar: AppBar(title: Text(title!)),
       body: ListView.builder(
         itemBuilder: ((context, index) {
-          return Container(child: Text(mealCategoryFiltered[index].title));
+          return InkWell(
+            child: MealItem(
+                title: mealCategoryFiltered[index].title,
+                imageURL: mealCategoryFiltered[index].imageUrl,
+                duration: mealCategoryFiltered[index].duration,
+                complexity: mealCategoryFiltered[index].complexity,
+                affordability: mealCategoryFiltered[index].affordability),
+          );
         }),
         itemCount: mealCategoryFiltered.length,
       ),
