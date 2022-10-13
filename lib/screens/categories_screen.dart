@@ -4,7 +4,7 @@ import '../widgets/category_item.dart';
 import '../dummy_data.dart';
 
 class CategoryScreen extends StatelessWidget {
-  // this is the screen that shows the GridView with all its categories
+  // this is the screen that shows the GridView with all its categories . The First Screen of the app
   const CategoryScreen({super.key});
 
   @override
