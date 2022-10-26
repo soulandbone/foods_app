@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './screens/tabs_screen.dart';
 import './screens/category_meals_screen.dart';
 import './screens/meal_details_screen.dart';
-import './screens/categories_screen.dart';
+import 'screens/category_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Deli Meals',
         theme: ThemeData(
           primaryColor: Colors.pink,
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         ),
         // home: const TabsScreem(),
         routes: {
-          '/': (context) => TabsScreen(),
+          '/': (context) => const TabsScreen(),
           CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(),
           MealDetailsScreen.routeName: (context) => MealDetailsScreen(),
         },
