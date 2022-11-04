@@ -17,7 +17,6 @@ class CategoryMealsScreen extends StatelessWidget {
       return element.categories.contains(arguments['id']);
     }).toList(); //generates a new list from DUMMY_MEALS where the element has the selected category as one of the elements in the categories the food belongs to.  This list then only has the meals that belong to a particular category, so its just a matter of rendering those elements to the screen
 
-    print(mealCategoryFiltered.length);
     final title = arguments['title'];
 
     return Scaffold(
