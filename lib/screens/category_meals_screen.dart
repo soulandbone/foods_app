@@ -44,7 +44,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title!)),
+      appBar: AppBar(title: Text(title)),
       body: ListView.builder(
         itemBuilder: ((context, index) {
           return InkWell(
