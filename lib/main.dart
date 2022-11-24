@@ -20,7 +20,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Map<String, bool> _appliedFilters = {
+  Map<String, bool> _currentFilters = {
     'Gluten-Free': false,
     'Lactose-Free': false,
     'Vegan': false,
@@ -31,18 +31,18 @@ class _MyAppState extends State<MyApp> {
 
   void _setFilters(Map<String, bool> filteredData) {
     setState(() {
-      _appliedFilters = filteredData;
+      _currentFilters = filteredData;
       _filteredMeal = DUMMY_MEALS.where((meal) {
-        if (!meal.isGlutenFree && _appliedFilters['Gluten-Free']!) {
+        if (!meal.isGlutenFree && _currentFilters['Gluten-Free']!) {
           return false;
         }
-        if (!meal.isLactoseFree && _appliedFilters['Lactose-Free']!) {
+        if (!meal.isLactoseFree && _currentFilters['Lactose-Free']!) {
           return false;
         }
-        if (!meal.isVegan && _appliedFilters['Vegan']!) {
+        if (!meal.isVegan && _currentFilters['Vegan']!) {
           return false;
         }
-        if (!meal.isVegetarian && _appliedFilters['Vegetarian']!) {
+        if (!meal.isVegetarian && _currentFilters['Vegetarian']!) {
           return false;
         }
 
@@ -76,7 +76,8 @@ class _MyAppState extends State<MyApp> {
           CategoryMealsScreen.routeName: (context) =>
               CategoryMealsScreen(_filteredMeal),
           MealDetailsScreen.routeName: (context) => MealDetailsScreen(),
-          FiltersScreen.routeName: (context) => FiltersScreen(_setFilters),
+          FiltersScreen.routeName: (context) =>
+              FiltersScreen(_currentFilters, _setFilters),
         },
         onUnknownRoute: (settings) =>
             MaterialPageRoute(builder: ((context) => const CategoryScreen())));
