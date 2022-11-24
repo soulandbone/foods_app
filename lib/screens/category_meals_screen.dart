@@ -6,6 +6,9 @@ import '../dummy_data.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   static const routeName = '/category_meals_screen';
+  final List<Meal> filteredMeals;
+
+  CategoryMealsScreen(this.filteredMeals);
 
   @override
   State<CategoryMealsScreen> createState() => _CategoryMealsScreenState();
@@ -30,7 +33,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
       final arguments =
           ModalRoute.of(context)!.settings.arguments as Map<String, String>;
 
-      _displayedMeal = DUMMY_MEALS.where((element) {
+      _displayedMeal = widget.filteredMeals.where((element) {
         return element.categories.contains(arguments['id']);
       }).toList(); //generates a new list from DUMMY_MEALS where the element has the selected category as one of the elements in the categories the food belongs to.  This list then only has the meals that belong to a particular category, so its just a matter of rendering those elements to the screen
 
