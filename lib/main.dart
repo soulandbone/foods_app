@@ -28,6 +28,34 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Meal> _filteredMeal = DUMMY_MEALS;
+  List<Meal> _favoriteMeals = [];
+
+  void _toggleSwitch(String mealId) {
+    int existingIndex = _favoriteMeals.indexWhere(
+      (meal) => mealId == meal.id,
+    );
+
+    setState(() {
+      if (existingIndex <
+          0) // Meal does not exist in the favorite list, means we are adding it
+      {
+        _favoriteMeals.add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+      } else // Meal exists already in the favorite list, which means we need to put it out of there
+      {
+        _favoriteMeals.removeAt(existingIndex);
+      }
+
+      print(_favoriteMeals);
+    });
+  }
+
+  bool _isMealFavorited(mealId) {
+    if (_favoriteMeals.any((meal) => meal.id == mealId)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   void _setFilters(Map<String, bool> filteredData) {
     setState(() {
@@ -72,10 +100,11 @@ class _MyAppState extends State<MyApp> {
         ),
         // home: const TabsScreem(),
         routes: {
-          '/': (context) => const TabsScreen(),
+          '/': (context) => TabsScreen(_favoriteMeals),
           CategoryMealsScreen.routeName: (context) =>
               CategoryMealsScreen(_filteredMeal),
-          MealDetailsScreen.routeName: (context) => MealDetailsScreen(),
+          MealDetailsScreen.routeName: (context) =>
+              MealDetailsScreen(_toggleSwitch, _isMealFavorited),
           FiltersScreen.routeName: (context) =>
               FiltersScreen(_currentFilters, _setFilters),
         },
