@@ -35,18 +35,18 @@ class _MyAppState extends State<MyApp> {
       (meal) => mealId == meal.id,
     );
 
-    setState(() {
-      if (existingIndex <
-          0) // Meal does not exist in the favorite list, means we are adding it
-      {
+    if (existingIndex <
+        0) // Meal does not exist in the favorite list, means we are adding it
+    {
+      setState(() {
         _favoriteMeals.add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
-      } else // Meal exists already in the favorite list, which means we need to put it out of there
-      {
+      });
+    } else // Meal exists already in the favorite list, which means we need to put it out of there
+    {
+      setState(() {
         _favoriteMeals.removeAt(existingIndex);
-      }
-
-      print(_favoriteMeals);
-    });
+      });
+    }
   }
 
   bool _isMealFavorited(mealId) {
